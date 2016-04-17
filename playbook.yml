@@ -4,5 +4,6 @@
   hosts: pis
   roles:
     - pi
-  become: pi
+  remote_user: pi
+  become: yes
   become_method: sudo
