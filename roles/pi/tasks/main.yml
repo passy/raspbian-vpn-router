@@ -1,6 +1,6 @@
 ---
 - name: 'Update APT package cache'
-  action: apt update_cache=yes
+  apt: update_cache=yes
 
 - name: 'Upgrade APT to the lastest packages'
-  action: apt upgrade=safe
+  apt: upgrade=safe
