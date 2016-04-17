@@ -50,6 +50,10 @@ full control over the ADSL could be useful. Maybe.
 
 ## Ansible
 
+Copy `playbook.yml.example` to `playbook.yml` and make the necessary adjustments,
+notably add your premiumize.me credentials to it. Afterwards, you can run it
+like:
+
 ```
 ansible-playbook -i hosts playbook.yml
 ```

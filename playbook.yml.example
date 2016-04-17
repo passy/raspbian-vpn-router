@@ -4,6 +4,10 @@
   hosts: pis
   roles:
     - pi
+    - role: openvpn-client
+      premiumize:
+          customer_id: "your_customer_id"
+          pin: "your_pin"
   remote_user: pi
   become: yes
   become_method: sudo
