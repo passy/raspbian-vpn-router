@@ -6,10 +6,14 @@
 - name: install ca cert
   copy: src=ca.crt dest=/etc/openvpn/ca.crt
 
-# TODO: Make this a loop over the available certs instead
-- name: install nl cert
-  copy: src=vpn-nl.premiumize.me.ovpn dest=/etc/openvpn/premiumize-nl.conf
-
+- name: install premiumize configs
+  template: src=premiumize.ovpn dest="/etc/openvpn/premiumize-{{ item }}.conf"
+  with_items:
+    - us
+    - gb
+    - sw
+    - nl
+    
 - name: write creds
   template: src=openvpn-login dest=/etc/openvpn/login mode="u=r,g=,o=" owner=root
 

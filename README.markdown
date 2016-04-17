@@ -2,7 +2,8 @@
 
 <img src="https://www.raspberrypi.org/wp-content/uploads/2015/08/raspberry-pi-logo.png" width=150 align=left>
 
-I've got myself a Raspberry Pi 3 and want to use it as my home router.
+I've got myself a Raspberry Pi 3 and want to use it as my home router and VPN
+gateway.
 At some point, I'll probably accidentally step or it or pour a flat white on it
 and then wonder how I set it up to do what it's supposed to do.
 
@@ -16,6 +17,15 @@ for myself. However, if you have any suggestions, feel free to send PRs my way.
 - Serve as DHCP server.
 - Serve as VPN-Client and relay. Enable/disable country masking for all
   connected devices.
+
+## Status
+
+**Incomplete!**
+
+By following the instructions you'll end up with a functioning VPN gateway
+connected via Ethernet. You'll still have to manually set up a route on your
+target which kind of defeats the purpose as you cannot do this on a
+Playstation or a ChromeCast.
 
 ## Plans
 
@@ -61,3 +71,18 @@ ansible-playbook -i hosts playbook.yml
 This assumes that the hostname in `hosts` can be resolved and you can log in
 password-less via the `pi` user. It also expects the Pi to already have a
 working internet connection.
+
+## Using the Router
+
+**Temporary**
+
+On your target device, assuming it's IPv4:
+
+```
+# Figure out your current default route:
+$ route -n | grep 0.0.0.0
+# Delete the default GW
+$ route del default gw <ip_address_from_above>
+# Add the new route to the Pi
+$ route add default gw <pi_ip_addr>
+```
