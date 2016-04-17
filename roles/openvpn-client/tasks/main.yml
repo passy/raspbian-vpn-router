@@ -1,0 +1,18 @@
+---
+
+- name: install openvpn
+  apt: name=openvpn state=present
+
+- name: install ca cert
+  copy: src=ca.crt dest=/etc/openvpn/ca.crt
+
+# TODO: Make this a loop over the available certs instead
+- name: install nl cert
+  copy: src=vpn-nl.premiumize.me.ovpn dest=/etc/openvpn/premiumize-nl.conf
+
+- name: write creds
+  template: src=openvpn-login dest=/etc/openvpn/login mode="u=r,g=,o=" owner=root
+
+# Set ip forwarding on in /proc and in the sysctl file and reload if necessary
+- name: ipv4 forward
+  sysctl: name="net.ipv4.ip_forward" value=1 sysctl_set=yes state=present reload=yes
