@@ -1,0 +1,8 @@
+---
+
+- name: Ansible Playbook for setting up a brand new Raspberry Pi
+  hosts: pis
+  roles:
+    - pi
+  become: pi
+  become_method: sudo
