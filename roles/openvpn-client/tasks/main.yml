@@ -16,20 +16,3 @@
 
 - name: write creds
   template: src=openvpn-login dest=/etc/openvpn/login mode="u=r,g=,o=" owner=root
-
-# Set ip forwarding on in /proc and in the sysctl file and reload if necessary
-- name: ipv4 forward
-  sysctl: name="net.ipv4.ip_forward" value=1 sysctl_set=yes state=present reload=yes
-
-# Set up the firewall
-- name: install iptables-persistent for Debian
-  apt: pkg=iptables-persistent state=present
-
-- name: copy rules.v4
-  copy: src=rules.v4 dest=/etc/iptables/rules.v4
-
-- name: copy rules.v6
-  copy: src=rules.v6 dest=/etc/iptables/rules.v6
-
-- name: enable netfilter-persistent on boot
-  service: name=netfilter-persistent enabled=yes
