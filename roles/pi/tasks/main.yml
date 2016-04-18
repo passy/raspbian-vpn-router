@@ -40,12 +40,20 @@
   copy: src=defaults_hostapd dest=/etc/default/hostapd
   tags: networking
 
+- name: enable hostapd on boot
+  service: name=hostapd enabled=yes
+  tags: networking
+
 - name: install dnsmasq
   apt: pkg=dnsmasq state=present
   tags: networking
 
 - name: set up dnsmasq
   template: src=dnsmasq.conf dest=/etc/dnsmasq.conf
+  tags: networking
+
+- name: enable dnsmasq on boot
+  service: name=dnsmasq enabled=yes
   tags: networking
 
 - name: set up dhcpcd

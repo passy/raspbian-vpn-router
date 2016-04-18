@@ -2,9 +2,11 @@
 
 - name: install openvpn
   apt: name=openvpn state=present
+  tags: openvpn
 
 - name: install ca cert
   copy: src=ca.crt dest=/etc/openvpn/ca.crt
+  tags: openvpn
 
 - name: install premiumize configs
   template: src=premiumize.ovpn dest="/etc/openvpn/premiumize-{{ item }}.conf"
@@ -13,6 +15,12 @@
     - gb
     - sw
     - nl
+  tags: openvpn
 
 - name: write creds
   template: src=openvpn-login dest=/etc/openvpn/login mode="u=r,g=,o=" owner=root
+  tags: openvpn
+
+- name: install openvpn default
+  template: src=default_openvpn dest=/etc/default/openvpn owner=root
+  tags: openvpn
