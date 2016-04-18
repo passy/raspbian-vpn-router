@@ -4,3 +4,25 @@
 
 - name: 'Upgrade APT to the lastest packages'
   apt: upgrade=safe
+
+# Set up the WiFi hostspot
+
+- name: install hostapd
+  apt: pkg=hostapd state=present
+  tags: networking
+
+- name: set up hostapd
+  template: src=hostapd.conf dest=/etc/hostapd/hostapd.conf owner=root group=root mode=0644
+  tags: networking
+
+- name: install dnsmasq
+  apt: pkg=dnsmasq state=present
+  tags: networking
+
+- name: set up dhcpcd
+  template: src=dhcpcd.conf dest=/etc/dhcpcd.conf owner=root group=netdev mode=u=rw,g=rw,o=r
+  tags: networking
+
+- name: set up network interfaces
+  copy: src=interfaces dest=/etc/network/interfaces owner=root group=root mode=0644
+  tags: networking

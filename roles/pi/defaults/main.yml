@@ -1,0 +1,5 @@
+wifi:
+  ip_address: "172.24.1.1/24"
+  channel: 6
+  ssid: "passy-pi"
+  passphrase: "raspberrypi"
