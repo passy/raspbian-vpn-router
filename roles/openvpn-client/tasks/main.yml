@@ -15,6 +15,13 @@
     - gb
     - sw
     - nl
+    - ie
+    - ch
+    - de
+    - fr
+    - ca
+    - au
+    - at
   tags: openvpn
 
 - name: write creds
