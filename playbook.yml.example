@@ -4,6 +4,13 @@
   hosts: pis
   roles:
     - pi
+      wifi:
+        ip_address: "172.24.1.1/24"
+        channel: 6
+        ssid: "passy-pi"
+        passphrase: "raspberrypi"
+      dhcp:
+        range: "172.24.1.50,172.24.1.150"
     - role: openvpn-client
       premiumize:
           customer_id: "your_customer_id"

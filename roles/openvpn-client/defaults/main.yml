@@ -3,4 +3,4 @@ premiumize:
   pin: "000"
 
 openvpn:
-  autostart: "premiumize-sw"
+  autostart: "premiumize-nl"

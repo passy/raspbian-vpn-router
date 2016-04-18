@@ -20,12 +20,11 @@ for myself. However, if you have any suggestions, feel free to send PRs my way.
 
 ## Status
 
-**Incomplete!**
+**Kind of working**
 
-By following the instructions you'll end up with a functioning VPN gateway
-connected via Ethernet. You'll still have to manually set up a route on your
-target which kind of defeats the purpose as you cannot do this on a
-Playstation or a ChromeCast.
+You get a WiFi hotspot that tunnels all requests through `tun0` which is
+backed by an OpenVPN connection. I'm not sure if this is stable enough for
+use and there's no good way from the outside to enable/disable VPNs.
 
 ## Plans
 
@@ -72,9 +71,21 @@ This assumes that the hostname in `hosts` can be resolved and you can log in
 password-less via the `pi` user. It also expects the Pi to already have a
 working internet connection.
 
-## Using the Router
+## Using the WiFi
 
-**Temporary**
+Everything should automatically start up, but Linux boxes are painfully
+stateful so if the VPN or something else didn't come up, just reboot that thing.
+
+Afterwards, you should be able to connect to the device via WiFi. The defaults
+are SSID "passy-pi" and password "raspberrypi". Afterwards, your connected
+device should be transparently routed through the VPN. Sorry, Netflix.
+
+<img src="https://i.imgur.com/f5V3BnV.jpg" width=500>
+
+## Testing the Router manually
+
+In case something is wrong with the WiFi and you just want to verify if
+the routing works, you can add a route manually.
 
 On your target device, assuming it's IPv4:
 
