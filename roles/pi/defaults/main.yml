@@ -3,3 +3,5 @@ wifi:
   channel: 6
   ssid: "passy-pi"
   passphrase: "raspberrypi"
+dhcp:
+  range: "172.24.1.50,172.24.1.150"

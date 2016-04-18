@@ -12,11 +12,19 @@
   tags: networking
 
 - name: set up hostapd
-  template: src=hostapd.conf dest=/etc/hostapd/hostapd.conf owner=root group=root mode=0644
+  template: src=hostapd.conf dest=/etc/hostapd/hostapd.conf
+  tags: networking
+
+- name: set up hostapd default
+  copy: src=defaults_hostapd dest=/etc/default/hostapd
   tags: networking
 
 - name: install dnsmasq
   apt: pkg=dnsmasq state=present
+  tags: networking
+
+- name: set up dnsmasq
+  template: src=dnsmasq.conf dest=/etc/dnsmasq.conf
   tags: networking
 
 - name: set up dhcpcd
@@ -24,5 +32,5 @@
   tags: networking
 
 - name: set up network interfaces
-  copy: src=interfaces dest=/etc/network/interfaces owner=root group=root mode=0644
+  copy: src=interfaces dest=/etc/network/interfaces
   tags: networking
