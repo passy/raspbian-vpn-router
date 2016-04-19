@@ -11,25 +11,26 @@ To avoid this, here are some notes and scripts to make it less painful when that
 happens. Don't confuse this with a tutorial. I'm writing this first and foremost
 for myself. However, if you have any suggestions, feel free to send PRs my way.
 
-## Goals
+## Goal
 
-- Have a Pi connected via LAN to an existing router/gateway to the internet.
-- Serve as DHCP server.
-- Serve as VPN-Client and relay. Enable/disable country masking for all
-  connected devices.
+Have a WiFi access point that I can connect my phone and ChromeCast to and
+transparently get routed through an OpenVPN.
+
+**Stretchgoal:** Have an API to switch between the VPNs. Perhaps even a physical
+button? How cool would that be?
+
+## Non-Goals
+
+- Connect to the internet through a modem. I'd rather switch this on and off
+  when I need it and it simplifies the setup and firewall rules a ton.
 
 ## Status
 
-**Kind of working**
+**It's working!**
 
 You get a WiFi hotspot that tunnels all requests through `tun0` which is
 backed by an OpenVPN connection. I'm not sure if this is stable enough for
 use and there's no good way from the outside to enable/disable VPNs.
-
-## Plans
-
-- Investigate if using a modem (or router in bridge-mode) makes sense. Having
-full control over the ADSL could be useful. Maybe.
 
 ## Preparing the SD Card
 
@@ -81,6 +82,9 @@ are SSID "passy-pi" and password "raspberrypi". Afterwards, your connected
 device should be transparently routed through the VPN. Sorry, Netflix.
 
 <img src="https://i.imgur.com/f5V3BnV.jpg" width=500>
+
+I now have a second ChromeCast that only connects to this AP and hence thinks
+it's in whatever country I tell it to. Neat.
 
 ## Testing the Router manually
 
