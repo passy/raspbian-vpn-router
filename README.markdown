@@ -101,3 +101,29 @@ $ route del default gw <ip_address_from_above>
 # Add the new route to the Pi
 $ route add default gw <pi_ip_addr>
 ```
+
+## Updating parts of the config
+
+Something I only found out about when working on this that I should have really known before is that you can selectively run ansible tasks by specifying tags.
+
+If you, for instance, change your VPN settings but don't want to also run an `apt-get upgrade` you can use the `openvpn` tag like so:
+
+```
+ansible-playbook -i hosts playbook.yml --tags openvpn
+```
+
+Multiple tags can be comma-separated.
+
+## DNS Rerouting
+
+Certain movie streaming services has gotten *a lot more aggressive* lately and not only block the usual suspects, but entire fucking IP ranges (both IPv4 **and** IPv6) for hosting providers like DigitalOcean, AWS and Linode. I wish they had done this a couple of weeks earlier so I could have avoided all the previous work.
+
+But anyway, one so far unaddressed attack vector is using a custom DNS. This even comes with a bunch of benefits like better performance and no traffic limits. And all it takes is a couple of `iptables` rules to rewrite all DNS requests to those custom servers.
+
+I'm currently testing [ViperDNS](https://www.viperdns.com) for just that, which even offers a 7 day free trial.
+
+In order to prepare your Pi for the service, you need to change your `playbook.yml` ever so slightly. You can either leave the `openvpn` part out entirely if you've never provisioned your device before or (damn you statefulness) make sure to set `openvpn.autostart` to `none` to avoid unnecessarily spinning up instances. Be aware that an empty string here means running daemons for *all* `*.conf` files in `/etc/openvpn/`.
+
+Check out [`playbook.yml.dnsexample`](./playbook.yml.dnsexample) for an example. The interesting bits here are `firewall.mode: "dns"` rather than `"tunnel"` which is the default and the `force_dns: "185.51.194.194"` which overrides all incoming DNS requests (or anything really talking to port 53) to the given IP address.
+
+Afterwards, just replay the playbook and reboot the device.

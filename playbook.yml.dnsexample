@@ -3,7 +3,7 @@
 - name: Ansible Playbook for setting up a brand new Raspberry Pi
   hosts: pis
   roles:
-    - pi
+    - role: pi
       wifi:
         ip_address: "172.24.1.1/24"
         channel: 6
@@ -12,11 +12,11 @@
       dhcp:
         range: "172.24.1.50,172.24.1.150"
       firewall:
-        mode: "tunnel"
+        mode: "dns"
+        force_dns: "185.51.194.194"
     - role: openvpn-client
-      premiumize:
-        customer_id: "your_customer_id"
-        pin: "your_pin"
+      openvpn:
+        autostart: "none"
   remote_user: pi
   become: yes
   become_method: sudo
