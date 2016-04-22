@@ -15,11 +15,11 @@
   tags: firewall
 
 - name: copy rules.v4
-  copy: src=rules.v4 dest=/etc/iptables/rules.v4
+  template: src=rules.v4 dest=/etc/iptables/rules.v4
   tags: firewall
 
 - name: copy rules.v6
-  copy: src=rules.v6 dest=/etc/iptables/rules.v6
+  template: src=rules.v6 dest=/etc/iptables/rules.v6
   tags: firewall
 
 - name: enable netfilter-persistent on boot

@@ -5,3 +5,8 @@ wifi:
   passphrase: "raspberrypi"
 dhcp:
   range: "172.24.1.50,172.24.1.150"
+firewall:
+  # Specify either 'tunnel' or 'dns'
+  mode: "tunnel"
+  # Only relevant in 'dns' mode
+  force_dns: '185.51.194.194'
