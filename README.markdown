@@ -127,3 +127,11 @@ In order to prepare your Pi for the service, you need to change your `playbook.y
 Check out [`playbook.yml.dnsexample`](./playbook.yml.dnsexample) for an example. The interesting bits here are `firewall.mode: "dns"` rather than `"tunnel"` which is the default and the `force_dns: "185.51.194.194"` which overrides all incoming DNS requests (or anything really talking to port 53) to the given IP address.
 
 Afterwards, just replay the playbook and reboot the device.
+
+If you've updated just the DNS redirect and want to skip the other tasks, the
+tag you want to use is `firewall`, i.e.
+
+
+```
+ansible-playbook -i hosts playbook.yml --tags firewall
+```
