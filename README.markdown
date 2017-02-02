@@ -1,4 +1,4 @@
-# Passy's Raspbian Setup
+# Passy's Raspberry PI VPN Router
 
 <img src="https://www.raspberrypi.org/wp-content/uploads/2015/08/raspberry-pi-logo.png" width=150 align=left>
 
