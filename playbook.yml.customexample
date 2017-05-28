@@ -1,6 +1,6 @@
 ---
 
-- name: Ansible Playbook for setting up a brand new Raspberry Pi
+- name: Set up a Raspberry Pi 3 as AP to a custom OpenVPN
   hosts: pis
   roles:
     - pi
@@ -13,10 +13,9 @@
         range: "172.24.1.50,172.24.1.150"
       firewall:
         mode: "tunnel"
-    - role: openvpn-client
-      premiumize:
-        customer_id: "your_customer_id"
-        pin: "your_pin"
+    - role: custom-openvpn
+      openvpn:
+        ovpn: "./myvpn.ovpn"
   remote_user: pi
   become: yes
   become_method: sudo

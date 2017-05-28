@@ -15,7 +15,11 @@
 #AUTOSTART="all"
 #AUTOSTART="none"
 #AUTOSTART="home office"
-AUTOSTART="{{ openvpn.autostart }}"
+{% if openvpn.autostart %}
+AUTOSTART="custom"
+{% else %}
+AUTOSTART="none"
+{% endif %}
 #
 # WARNING: If you're running systemd the rest of the
 # options in this file are ignored.

@@ -1,0 +1,13 @@
+---
+
+- name: install openvpn
+  apt: name=openvpn state=present
+  tags: openvpn
+
+- name: install config
+  template: src={{ openvpn.ovpn}} dest="/etc/openvpn/custom.conf"
+  tags: openvpn
+
+- name: install openvpn default
+  template: src=default_openvpn dest=/etc/default/openvpn owner=root
+  tags: openvpn

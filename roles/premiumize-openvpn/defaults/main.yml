@@ -1,6 +1,4 @@
 premiumize:
   customer_id: "000"
   pin: "000"
-
-openvpn:
   autostart: "premiumize-nl"
