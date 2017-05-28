@@ -3,7 +3,7 @@
 - name: Set up a Raspberry Pi 3 as AP to a custom OpenVPN
   hosts: pis
   roles:
-    - pi
+    - role: pi
       wifi:
         ip_address: "172.24.1.1/24"
         channel: 6

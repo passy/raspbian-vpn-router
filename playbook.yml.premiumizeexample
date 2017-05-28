@@ -3,7 +3,7 @@
 - name: Ansible Playbook for setting up a brand new Raspberry Pi
   hosts: pis
   roles:
-    - pi
+    - role: pi
       wifi:
         ip_address: "172.24.1.1/24"
         channel: 6
