@@ -16,13 +16,9 @@ for myself. However, if you have any suggestions, feel free to send PRs my way.
 Have a WiFi access point that I can connect my phone and ChromeCast to and
 transparently get routed through an OpenVPN.
 
-**Stretchgoal:** Have an API to switch between the VPNs. Perhaps even a physical
-button? How cool would that be?
-
-## Non-Goals
-
-- Connect to the internet through a modem. I'd rather switch this on and off
-  when I need it and it simplifies the setup and firewall rules a ton.
+To set up the other side of this, I can whole-heartedly recommend
+the [docker-openvpn](https://github.com/kylemanna/docker-openvpn)
+suite which makes the server-side setup a breeze.
 
 ## Status
 
