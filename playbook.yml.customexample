@@ -14,8 +14,8 @@
       firewall:
         mode: "tunnel"
     - role: custom-openvpn
-      openvpn:
-        ovpn: "./myvpn.ovpn"
+      openvpn_ovpn: "./fbmbook.ovpn"
+      openvpn_autostart: true
   remote_user: pi
   become: yes
   become_method: sudo

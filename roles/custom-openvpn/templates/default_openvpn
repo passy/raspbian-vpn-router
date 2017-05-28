@@ -15,7 +15,7 @@
 #AUTOSTART="all"
 #AUTOSTART="none"
 #AUTOSTART="home office"
-{% if openvpn.autostart %}
+{% if openvpn_autostart %}
 AUTOSTART="custom"
 {% else %}
 AUTOSTART="none"

@@ -1,3 +1,2 @@
-openvpn:
-  ovpn: null
-  autostart: true
+openvpn_ovpn: null
+openvpn_autostart: true
