@@ -43,6 +43,8 @@ use and there's no good way from the outside to enable/disable VPNs.
   you're writing to, but keep in mind that this image is intended to partition
   the entire card, so don't specify a partition (i.e. `sdb` not `sdb1`):
   `dd bs=4M if=2016-03-18-raspbian-jessie.img of=/dev/sdb`
+- Follow [this guide](https://medium.com/@zw3rk/quick-headless-raspberry-pi-setup-52ad6dd312c4)
+  to get SSH enabled on first boot.
 
 ## Initial setup
 
