@@ -14,4 +14,4 @@ install:
   - pip install ansible
 script:
   # Check the role/playbook's syntax.
-  - "ansible-playbook --syntax-check playbook.yml -i hosts"
+  - ansible-playbook --syntax-check playbook.yml.customexample -i hosts
