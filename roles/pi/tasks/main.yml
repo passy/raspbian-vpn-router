@@ -48,6 +48,10 @@
   apt: pkg=dnsmasq state=present
   tags: networking
 
+- name: install updated systemd dnsmasq script
+  file: src=dnsmasq.service dest=/lib/systemd/system/dnsmasq.service
+  tags: networking
+
 - name: set up dnsmasq
   template: src=dnsmasq.conf dest=/etc/dnsmasq.conf
   tags: networking
