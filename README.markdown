@@ -4,7 +4,7 @@
 
 I've got myself a Raspberry Pi 3 and want to use it as my home router and VPN
 gateway.
-At some point, I'll probably accidentally step or it or pour a flat white on it
+At some point, I'll probably accidentally step on it or pour a flat white on it
 and then wonder how I set it up to do what it's supposed to do.
 
 To avoid this, here are some notes and scripts to make it less painful when that
